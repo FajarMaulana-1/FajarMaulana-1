@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 320px;
+        }
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        input {
+            width: calc(100% - 20px);
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+            transition: 0.3s;
+        }
+        input:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 8px rgba(102, 126, 234, 0.5);
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #667eea;
+            border: none;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: #5a67d8;
+        }
+        .toggle {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #555;
+            cursor: pointer;
+        }
+        .guest {
+            background: #28a745;
+            margin-top: 10px;
+        }
+        .guest:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="login-container">
+        <h2>Login</h2>
+        <input type="text" id="login-username" placeholder="Username">
+        <input type="password" id="login-password" placeholder="Password">
+        <button onclick="login()">Login</button>
+        <button class="guest" onclick="guestLogin()">Masuk sebagai Tamu</button>
+        <p class="toggle" onclick="toggleForm()">Belum punya akun? Registrasi</p>
+    </div>
+
+    <div class="container" id="register-container" style="display: none;">
+        <h2>Registrasi</h2>
+        <input type="text" id="register-username" placeholder="Username">
+        <input type="password" id="register-password" placeholder="Password">
+        <button onclick="register()">Register</button>
+        <p class="toggle" onclick="toggleForm()">Sudah punya akun? Login</p>
+    </div>
+
+    <script>
+        let users = {};
+
+        function toggleForm() {
+            let loginContainer = document.getElementById('login-container');
+            let registerContainer = document.getElementById('register-container');
+            
+            if (loginContainer.style.display === "none") {
+                loginContainer.style.display = "block";
+                registerContainer.style.display = "none";
+            } else {
+                loginContainer.style.display = "none";
+                registerContainer.style.display = "block";
+            }
+        }
+
+        function register() {
+            let username = document.getElementById('register-username').value;
+            let password = document.getElementById('register-password').value;
+            
+            if (username && password) {
+                if (users[username]) {
+                    alert("Username sudah terdaftar!");
+                } else {
+                    users[username] = password;
+                    alert("Registrasi berhasil! Silakan login.");
+                    toggleForm();
+                }
+            } else {
+                alert("Harap isi semua kolom!");
+            }
+        }
+
+        function login() {
+            let username = document.getElementById('login-username').value;
+            let password = document.getElementById('login-password').value;
+            
+            if (users[username] && users[username] === password) {
+                localStorage.setItem("user", username);
+                window.location.href = "index.html";
+            } else {
+                alert("Username atau password salah!");
+            }
+        }
+
+        function guestLogin() {
+            localStorage.setItem("user", "Guest");
+            alert("Anda masuk sebagai tamu!");
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>
