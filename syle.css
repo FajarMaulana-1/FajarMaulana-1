@@ -1,0 +1,180 @@
+/* Reset CSS */
+* {
+    margin: 2;
+    padding: 2;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', sans-serif;
+}
+
+body {
+    background: linear-gradient(-45deg, #ff0000, #ff0000);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+    color: #ff0000;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.container {
+    max-width: 900px;
+    margin: 100px auto;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 2);
+    color: #000000;
+    position: relative;
+    overflow: hidden;
+}
+
+header {
+    text-align: center;
+    padding: 30px 0;
+    position: relative;
+}
+
+.profile-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 60%;
+    border: 6px solid #ff0000;
+    transition: transform 0.3s ease-in-out;
+}
+
+.profile-img:hover {
+    transform: scale(1.1);
+}
+
+h1 {
+    font-size: 30px;
+    margin: 15px 0;
+    color: #000000;
+}
+
+p {
+    font-size: 16px;
+    color: #000000;
+    margin-bottom: 15px;
+}
+
+h2 {
+    color: #ff0000;
+    border-bottom: 4px solid #ff0000;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+ul li {
+    background: #ffe5e5;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 8px;
+    transition: transform 0.3s ease, background 0.3s ease;
+    border: 2px solid #050505;
+}
+
+ul li:hover {
+    transform: translateX(10px);
+    background: #ff0000;
+}
+
+/* Social Media Icons */
+.social-media {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: scale(1.2);
+}
+
+.download-btn {
+    display: block;
+    text-align: center;
+    margin: 25px auto;
+    padding: 10px 20px;
+    background: #ff0000;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 10px;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.download-btn:hover {
+    background: #cc0000;
+    transform: scale(0,5.0,5);
+    box-shadow: 0px 0px 15px rgba(255, 0, 0, 0.8);
+}
+
+/* Dark Mode */
+.dark-mode {
+    background: #121212;
+}
+
+.dark-mode .container {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000000;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode h1 {
+    color: #000000;
+}
+
+.dark-mode h2 {
+    color: #ff0000;
+    border-bottom: 3px solid #ff0000;
+}
+
+.dark-mode p, .dark-mode ul li {
+    color: #000000;
+}
+
+.dark-mode ul li {
+    background: #ffe5e5;
+    border: 2px solid #ffcccc;
+}
+
+.dark-mode ul li:hover {
+    background: #ffcccc;
+}
+
+.dark-mode .download-btn {
+    background: #ff0000;
+    color: #fff;
+}
+
+.dark-mode .download-btn:hover {
+    background: #cc0000;
+}
+
+/* Dark Mode for Social Media Icons */
+.dark-mode .social-icon {
+    filter: brightness(1.2);
+    width: 40px;
+    height: 40px;
+}
+
+.dark-mode .social-icon:hover {
+    filter: brightness(1.5);
+    transform: scale(1.2);
+}
